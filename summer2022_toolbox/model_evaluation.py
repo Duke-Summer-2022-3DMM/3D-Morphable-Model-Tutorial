@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 import numpy as np
 import open3d as o3d
-from visualization_3D_objects import *
-from model_PCA import *
+from summer2022_toolbox.visualization_3D_objects import *
+from summer2022_toolbox.model_PCA import *
 
 def get_all_MSE(X_test_flat, V, X_avg, n_features):
     MSE_all = []
@@ -253,5 +253,4 @@ def create_new_car(features, X_avg, weights_all, n_features=191):
             break
 
     new_shape = np.add(X_avg, np.matmul(features, (mod_weights)).reshape(-1, 3).T)
-    new_car_3D = single_flat_to_pointcloud(new_shape)
-    draw3DPoints(new_car_3D, "Congratulation! This is your unique car!")
+    draw3DPoints(new_shape, "Congratulation! This is your unique car!")
