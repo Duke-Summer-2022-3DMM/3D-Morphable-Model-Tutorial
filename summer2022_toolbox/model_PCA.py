@@ -1,6 +1,11 @@
 import numpy as np
 from tqdm import tqdm
 
+def single_flat_to_pointcloud(flat_shape):
+    """
+    convert point cloud from shape (3n, 1) to shape (3, n)
+    """
+    return flat_shape.reshape(((int)(flat_shape.shape[0] / 3), 3)).T
 
 def pointcloud_to_flat(X_all):
     X_flatten = []

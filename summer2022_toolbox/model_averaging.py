@@ -64,13 +64,14 @@ def getMean(S_reorder):
     return result
 
 
-def train_Mean(sample_X, S_reg, n, saver_name):
+def train_Mean(sample_X, S_reg, saver_name, n = 5, threshold = 20):
     """
     repeatedly calculate average model
     @param sample_X (np.ndarray(n, 3, n_1)): all shapes
     @param S_reg (np.ndarray(3, n_2)): Reference shape
-    @param n (int): training iterations
     @param saver_name (str): filename to save results in pickle
+    @param n (int): training iterations
+    @param threshold (int): threshold to end iteration
     @return: the average model after n iterations
     """
     model_mean = open(saver_name, 'wb')
@@ -78,7 +79,11 @@ def train_Mean(sample_X, S_reg, n, saver_name):
 
     for i in tqdm(range(n)):
         S_tilde, S_reorder = reOrder(sample_X, S_reg)
-        S_reg = getMean(S_reorder)
+        S_avg = getMean(S_reorder)
+        MSE = ((S_avg.flatten('F') - S_reg.flatten('F'))**2).mean()
+        if (MSE < threshold):
+            break
+        S_reg = S_avg
         result_all.append(S_reg)
 
     pickle.dump(result_all, model_mean)
