@@ -15,3 +15,4 @@ matplotlib 3.5.1
 
 plotly 5.6.0
 
+pickle 4.0
