@@ -24,18 +24,3 @@ $ conda activate env/main
 ``` 
 $ make install
 ```
-python 3.9.12
-
-open3d 0.15.2
-
-panda 1.4.2
-
-numpy 1.22.3
-
-matplotlib 3.5.1
-
-plotly 5.6.0
-
-pickle 4.0
-
-tqdm 4.64.0
