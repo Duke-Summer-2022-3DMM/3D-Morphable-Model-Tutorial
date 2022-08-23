@@ -1,5 +1,4 @@
-# 3DMM-Tutorial
-3D Morphable Model Tutorial
+# 3D Morphable Model Tutorial
 
 
 ## Installation
